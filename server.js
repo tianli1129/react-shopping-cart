@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const shortid = require("shortid");
 
 const app = express();
-app.use(bodyParser);
+app.use(bodyParser.json());
 
 mongoose.connect(
-  //replace with your mongodb url
-  "mongodb+srv://crimsonlaolao:19931129@cluster0.omdenku.mongodb.net/merng?retryWrites=true&w=majority",
+  //replace with your local or atlas mongodb url
+  "mongodb://react-shopping-cart",
   {
     useNewUrlParser: true,
   }
@@ -42,6 +42,6 @@ app.delete("/api/products/:id", async (req, res) => {
   res.send(deledProduct);
 });
 
-const port = process.env.PORT || 5001;
+const port = 5001;
 
-app.listen(port, () => console.log("serve at http://localhost:5000"));
+app.listen(port, () => console.log("serve at http://localhost:", port));
